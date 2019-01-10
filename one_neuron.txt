@@ -1,0 +1,19 @@
+import nengo
+import random
+import math
+
+from nengo.utils.functions import piecewise
+import matplotlib.pyplot as plt
+
+model = nengo.Network()
+with model:
+    nengo.neurons.LIF(tau_rc=0.01, tau_ref=0.001)
+    
+    stim_1 = nengo.Node([0])
+   
+    one_neuron = nengo.Ensemble(n_neurons=1, dimensions=1,radius=1)
+    
+    ## Connections
+    # stimulus
+    nengo.Connection(stim_1, one_neuron[0])
+
